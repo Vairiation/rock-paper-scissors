@@ -20,17 +20,15 @@
         - start getComputerValue function after user input
         */
         
-        const rock = 1;
-        const paper = 2;
-        const scissors = 3;
         let userValue;
         let computerValue;
+        // rock = 1
+        // paper = 2
+        // scissors = 3
         
-        function getRandomChoice() {
-            const computerChoice = Math.floor(Math.random()*3 + 1);
-            // computer chooses randomly
+        function getRandomChoice() { // logic must stay in function for game to loop without reload
+            const computerChoice = Math.floor(Math.random()*3 + 1); // computer chooses randomly
             computerValue = computerChoice;
-            console.log(computerValue);
         }
 
         function userChoseRock(input) {
