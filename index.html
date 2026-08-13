@@ -24,7 +24,7 @@
         // paper = 2
         // scissors = 3
         
-        function getRandomChoice() { // logic must stay in function for game to loop without reload
+        function getComputerChoice() { // logic must stay in function for game to loop without reload
             return Math.floor(Math.random()*3 + 1); // computer chooses randomly
         }
 
@@ -91,10 +91,10 @@
         }        
         function startGame() {
             let userValue;
-            const computerChoice = getRandomChoice();
+            const computerChoice = getComputerChoice();
         
             getUserInput();
-            getRandomChoice();
+            getComputerChoice();
             getWinner();
             startGame(); // restarts game perpetually so the user does not need to reload
         }
