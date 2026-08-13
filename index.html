@@ -28,74 +28,56 @@
             return Math.floor(Math.random()*3 + 1); // computer chooses randomly
         }
 
-        function userChoseRock(input) {
-            if (input === computerChoice) { // both rock
-                console.log('Tie! You both chose Rock');
-            } else if ((input + 2) === computerChoice) { //computer chooses scissors
-                console.log('You won! Rock beats Scissors');
-            } else if ((input + 1) === computerChoice) { // computer chooses paper
-                console.log('You Lost! Paper beats rock');
-            }
-        }
+        function getUserChoice() { // gets user's choice
+            const userChoice = prompt('Rock, Paper, or Scissors?').toLowerCase();
 
-        function userChosePaper(input) {
-            if (input === computerChoice) { // both paper
-                console.log('Tie! You both chose Paper');
-            } else if ((input - 1) === computerChoice) { //computer chooses rock
-                console.log('You won! Paper beats Rock');
-            } else if ((input + 1) === computerChoice) { // computer chooses scissors
-                console.log('You Lost! Scissors beats Paper');
-            }
-        }
-
-        function userChoseScissors(input) {
-            if (input === computerChoice) { // both scissors
-                console.log('Tie! You both chose Scissors');
-            } else if ((input - 1) === computerChoice) { //computer chooses paper
-                console.log('You won! Scissors beats Paper');
-            } else if ((input - 2) === computerChoice) { // computer chooses rock
-                console.log('You Lost! Rock beats Scissors');
-            }
-        } 
-        
-        function setUserValue(input) { // sets user's value based on choice
-            if (input === 'rock') {
-                userValue = 1;
-            } else if (input === 'paper') {
-                userValue = 2;
-            } else if (input === 'scissors') {
-                userValue = 3;
+            if (userChoice === 'rock') {
+                return 1;
+            } else if (userChoice === 'paper') {
+                return 2;
+            } else if (userChoice === 'scissors') {
+                return 3;
             } else {
                 alert('Please Choose a Valid Option');
                 getUserChoice(); //restarts prompt if invalid option is chosen
-            }
+            }            
         }
 
-        function getUserChoice() { // gets user's choice
-            const userInput = prompt('Rock, Paper, or Scissors?').toLowerCase();
-            
-            setUserValue(userInput);
-        }
-
-        function getWinner() {
-            if (userValue === 1) {
-                userChoseRock(userValue);
-            } else if (userValue === 2) {
-                userChosePaper(userValue);
-            } else if (userValue === 3) {
-                userChoseScissors(userValue);
+        function getWinner(userChoice, computerChoice) {
+            if (userChoice === 1) {
+                if (computerChoice === 1) { // both rock
+                console.log('Tie! You both chose Rock');
+                } else if (computerChoice === 3) { //computer chooses scissors
+                    console.log('You won! Rock beats Scissors');
+                } else if (computerChoice === 2) { // computer chooses paper
+                    console.log('You Lost! Paper beats rock');
+                }
+            } else if (userChoice === 2) {
+                if (computerChoice === 2) { // both paper
+                    console.log('Tie! You both chose Paper');
+                } else if (computerChoice === 1) { //computer chooses rock
+                    console.log('You won! Paper beats Rock');
+                } else if (computerChoice === 3) { // computer chooses scissors
+                    console.log('You Lost! Scissors beats Paper');
+                }
+            } else if (userChoice === 3) {
+                if (computerChoice === 3) { // both scissors
+                    console.log('Tie! You both chose Scissors');
+                } else if (computerChoice === 2) { //computer chooses paper
+                    console.log('You won! Scissors beats Paper');
+                } else if (computerChoice === 1) { // computer chooses rock
+                    console.log('You Lost! Rock beats Scissors');
+                }
             } else {
                 alert('Invalid, Please Reload the Page');
                 console.log('Invalid, Please Reload the Page');
             }
         }        
         function startGame() {
-            let userValue;
+            const userChoice = getUserChoice();
             const computerChoice = getComputerChoice();
         
-            getUserChoice();
-            getComputerChoice();
-            getWinner();
+            getWinner(userChoice, computerChoice);
             startGame(); // restarts game perpetually so the user does not need to reload
         }
         
