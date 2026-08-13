@@ -8,12 +8,16 @@
 <body>
     <script>
         /* Pseudo Code
-        Rock, paper, and scissors are assigned value (possibly 1-3)
-        define winner selection (ie. rock beat paper, etc.)
-        On function run, a value (1-3) is randomly chosen
-        User inputs their choice
-        User input is evaluated against computer's choice
-        winner is displayed with console.log
+        Done: 
+        - Rock, paper, and scissors are assigned value (possibly 1-3) -- done
+        - define winner selection (ie. rock beat paper, etc.) -- done
+        - User inputs their choice -- done
+        - User input is evaluated against computer's choice -- done
+        - winner is displayed with console.log -- done
+
+        Not Done:
+        - Create Computer value function where (1-3) is randomly chosen
+        - start getComputerValue function after user input
         */
         
         const rock = 1;
@@ -21,15 +25,6 @@
         const scissors = 3;
         let userValue;
         
-        
-        /*
-        differentiate between user and computer winning
-        - 3 separate scenarios based on user input
-        rock beats scissors -> 1 + 3 = 4 = user wins
-        paper beats rock -> 2 + 3 = 3 = user wins
-        scissor beats paper -> 3 + 2 = 5 = user wins
-        */
-
         function getRandomChoice() {
             let computerChoice;
             // computer chooses randomly
