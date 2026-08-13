@@ -24,42 +24,44 @@
         const paper = 2;
         const scissors = 3;
         let userValue;
+        let computerValue;
         
         function getRandomChoice() {
-            let computerChoice;
+            const computerChoice = Math.floor(Math.random()*3 + 1);
             // computer chooses randomly
-            return computerChoice
+            computerValue = computerChoice;
+            console.log(computerValue);
         }
 
         function userChoseRock(input) {
-            if (input === computerChoice) { // both rock
+            if (input === computerValue) { // both rock
                 console.log('Tie! You both chose Rock');
-            } else if ((input + 2) === computerChoice) { //computer chooses scissors
+            } else if ((input + 2) === computerValue) { //computer chooses scissors
                 console.log('You won! Rock beats Scissors');
-            } else if ((input + 1) === computerChoice) { // computer chooses paper
+            } else if ((input + 1) === computerValue) { // computer chooses paper
                 console.log('You Lost! Paper beats rock');
             }
         }
 
         function userChosePaper(input) {
-            if (input === computerChoice) { // both paper
+            if (input === computerValue) { // both paper
                 console.log('Tie! You both chose Paper');
-            } else if ((input - 1) === computerChoice) { //computer chooses rock
+            } else if ((input - 1) === computerValue) { //computer chooses rock
                 console.log('You won! Paper beats Rock');
-            } else if ((input + 1) === computerChoice) { // computer chooses scissors
+            } else if ((input + 1) === computerValue) { // computer chooses scissors
                 console.log('You Lost! Scissors beats Paper');
             }
         }
 
         function userChoseScissors(input) {
-            if (input === computerChoice) { // both scissors
+            if (input === computerValue) { // both scissors
                 console.log('Tie! You both chose Scissors');
-            } else if ((input - 1) === computerChoice) { //computer chooses paper
+            } else if ((input - 1) === computerValue) { //computer chooses paper
                 console.log('You won! Scissors beats Paper');
-            } else if ((input - 2) === computerChoice) { // computer chooses rock
+            } else if ((input - 2) === computerValue) { // computer chooses rock
                 console.log('You Lost! Rock beats Scissors');
             }
-        }        
+        } 
         
         function setUserValue(input) { // sets user's value based on choice
             if (input === 'rock') {
@@ -80,7 +82,26 @@
             setUserValue(userInput);
         }
 
-        getUserInput();
+        function getWinner() {
+            if (userValue === 1) {
+                userChoseRock(userValue);
+            } else if (userValue === 2) {
+                userChosePaper(userValue);
+            } else if (userValue === 3) {
+                userChoseScissors(userValue);
+            } else {
+                alert('Invalid, Please Reload the Page');
+                console.log('Invalid, Please Reload the Page');
+            }
+        }        
+        function startGame() {
+            getUserInput();
+            getRandomChoice();
+            getWinner();
+            startGame(); // restarts game perpetually so the user does not need to reload
+        }
+        
+        startGame(); // starts game on reload/load
     </script>
 </body>
 </html>
