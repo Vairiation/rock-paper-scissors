@@ -20,43 +20,40 @@
         - start getComputerValue function after user input
         */
         
-        let userValue;
-        let computerValue;
         // rock = 1
         // paper = 2
         // scissors = 3
         
         function getRandomChoice() { // logic must stay in function for game to loop without reload
-            const computerChoice = Math.floor(Math.random()*3 + 1); // computer chooses randomly
-            computerValue = computerChoice;
+            return Math.floor(Math.random()*3 + 1); // computer chooses randomly
         }
 
         function userChoseRock(input) {
-            if (input === computerValue) { // both rock
+            if (input === computerChoice) { // both rock
                 console.log('Tie! You both chose Rock');
-            } else if ((input + 2) === computerValue) { //computer chooses scissors
+            } else if ((input + 2) === computerChoice) { //computer chooses scissors
                 console.log('You won! Rock beats Scissors');
-            } else if ((input + 1) === computerValue) { // computer chooses paper
+            } else if ((input + 1) === computerChoice) { // computer chooses paper
                 console.log('You Lost! Paper beats rock');
             }
         }
 
         function userChosePaper(input) {
-            if (input === computerValue) { // both paper
+            if (input === computerChoice) { // both paper
                 console.log('Tie! You both chose Paper');
-            } else if ((input - 1) === computerValue) { //computer chooses rock
+            } else if ((input - 1) === computerChoice) { //computer chooses rock
                 console.log('You won! Paper beats Rock');
-            } else if ((input + 1) === computerValue) { // computer chooses scissors
+            } else if ((input + 1) === computerChoice) { // computer chooses scissors
                 console.log('You Lost! Scissors beats Paper');
             }
         }
 
         function userChoseScissors(input) {
-            if (input === computerValue) { // both scissors
+            if (input === computerChoice) { // both scissors
                 console.log('Tie! You both chose Scissors');
-            } else if ((input - 1) === computerValue) { //computer chooses paper
+            } else if ((input - 1) === computerChoice) { //computer chooses paper
                 console.log('You won! Scissors beats Paper');
-            } else if ((input - 2) === computerValue) { // computer chooses rock
+            } else if ((input - 2) === computerChoice) { // computer chooses rock
                 console.log('You Lost! Rock beats Scissors');
             }
         } 
@@ -93,6 +90,9 @@
             }
         }        
         function startGame() {
+            let userValue;
+            const computerChoice = getRandomChoice();
+        
             getUserInput();
             getRandomChoice();
             getWinner();
