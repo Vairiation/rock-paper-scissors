@@ -67,11 +67,11 @@
                 userValue = 3;
             } else {
                 alert('Please Choose a Valid Option');
-                getUserInput(); //restarts prompt if invalid option is chosen
+                getUserChoice(); //restarts prompt if invalid option is chosen
             }
         }
 
-        function getUserInput() { // gets user's choice
+        function getUserChoice() { // gets user's choice
             const userInput = prompt('Rock, Paper, or Scissors?').toLowerCase();
             
             setUserValue(userInput);
@@ -93,7 +93,7 @@
             let userValue;
             const computerChoice = getComputerChoice();
         
-            getUserInput();
+            getUserChoice();
             getComputerChoice();
             getWinner();
             startGame(); // restarts game perpetually so the user does not need to reload
