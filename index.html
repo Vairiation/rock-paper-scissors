@@ -75,21 +75,21 @@
                 console.log('Invalid, Please Reload the Page');
             }
         }        
-        function startGame() {
+        function playRound() {
             const userChoice = getUserChoice();
             const computerChoice = getComputerChoice();
 
             if (userChoice === undefined) {
                 stop();
-                console.log("If you'd like to play again, please reload the page or call startGame()");
+                console.log("If you'd like to play again, please reload the page or call playRound()");
                 alert("If you'd like to play again, please reload the page"); 
             } else {        
             getWinner(userChoice, computerChoice);
-            startGame(); // restarts game perpetually so the user does not need to reload
+            playRound(); // restarts game perpetually so the user does not need to reload
             }
         }
         
-        startGame(); // starts game on reload/load
+        playRound(); // starts game on reload/load
     </script>
 </body>
 </html>
