@@ -24,6 +24,9 @@
         // paper = 2
         // scissors = 3
         
+        let userScore = 0;
+        let computerScore = 0;
+
         function getComputerChoice() { // logic must stay in function for game to loop without reload
             return Math.floor(Math.random()*3 + 1); // computer chooses randomly
         }
@@ -51,24 +54,30 @@
                 console.log('Tie! You both chose Rock');
                 } else if (computerChoice === 3) { //computer chooses scissors
                     console.log('You won! Rock beats Scissors');
+                    userScore += 1;
                 } else if (computerChoice === 2) { // computer chooses paper
                     console.log('You Lost! Paper beats rock');
+                    computerScore += 1;
                 }
             } else if (userChoice === 2) {
                 if (computerChoice === 2) { // both paper
                     console.log('Tie! You both chose Paper');
                 } else if (computerChoice === 1) { //computer chooses rock
                     console.log('You won! Paper beats Rock');
+                    userScore += 1;
                 } else if (computerChoice === 3) { // computer chooses scissors
                     console.log('You Lost! Scissors beats Paper');
+                    computerScore += 1;
                 }
             } else if (userChoice === 3) {
                 if (computerChoice === 3) { // both scissors
                     console.log('Tie! You both chose Scissors');
                 } else if (computerChoice === 2) { //computer chooses paper
                     console.log('You won! Scissors beats Paper');
+                    userScore += 1;
                 } else if (computerChoice === 1) { // computer chooses rock
                     console.log('You Lost! Rock beats Scissors');
+                    computerScore += 1;
                 }
             } else {
                 alert('Invalid, Please Reload the Page');
@@ -90,10 +99,11 @@
         }
         
         function startGame() {
-            let userScore = 0;
-            let computerScore = 0;
+            userScore = 0;
+            computerScore = 0;
 
             playRound();
+            console.log(`User: ${userScore} | Computer: ${computerScore}`);
         }
 
         startGame(); // starts game on reload/load
