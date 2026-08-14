@@ -89,11 +89,12 @@
             const computerChoice = getComputerChoice();
 
             if (userChoice === undefined) {
-                stop();
                 console.log("If you'd like to play again, please reload the page or call playRound()");
                 alert("If you'd like to play again, please reload the page"); 
+                return false;
             } else {        
             getWinner(userChoice, computerChoice);
+                return true;
             }
         }
         
@@ -102,8 +103,11 @@
             computerScore = 0;
             
             for (let i = 0; i <= 4; i++) {
-                playRound();
-                console.log(`User: ${userScore} | Computer: ${computerScore}`);
+                if (!playRound()) {
+                    return;
+                } else {
+                    console.log(`User: ${userScore} | Computer: ${computerScore}`);
+                }
             }
             console.log(`Final Score: User: ${userScore} | Computer: ${computerScore} | Ties: ${5 - userScore - computerScore}`);
             alert(`Final Score: User: ${userScore} | Computer: ${computerScore} | Ties: ${5 - userScore - computerScore}`);
