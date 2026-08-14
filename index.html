@@ -94,16 +94,17 @@
                 alert("If you'd like to play again, please reload the page"); 
             } else {        
             getWinner(userChoice, computerChoice);
-            playRound(); // restarts game perpetually so the user does not need to reload
             }
         }
         
         function startGame() {
             userScore = 0;
             computerScore = 0;
-
-            playRound();
-            console.log(`User: ${userScore} | Computer: ${computerScore}`);
+            
+            for (let i = 0; i <= 4; i++) {
+                playRound();
+                console.log(`User: ${userScore} | Computer: ${computerScore}`);
+            }
         }
 
         startGame(); // starts game on reload/load
