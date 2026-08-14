@@ -29,7 +29,7 @@
         }
 
         function getUserChoice() { // gets user's choice
-            const userChoice = prompt('Rock, Paper, or Scissors?').toLowerCase();
+            const userChoice = prompt('Rock, Paper, or Scissors?')?.toLowerCase(); // ?. is Optional Chaining: If the object accessed or function called using this operator is undefined or null, the expression short circuits and evaluates to undefined instead of throwing an error.
 
             if (userChoice === 'rock') {
                 return 1;
@@ -37,9 +37,11 @@
                 return 2;
             } else if (userChoice === 'scissors') {
                 return 3;
+            } else if (userChoice === undefined) {
+                stop();
             } else {
                 alert('Please Choose a Valid Option');
-                getUserChoice(); //restarts prompt if invalid option is chosen
+               return getUserChoice(); //restarts prompt if invalid option is chosen
             }            
         }
 
@@ -76,9 +78,15 @@
         function startGame() {
             const userChoice = getUserChoice();
             const computerChoice = getComputerChoice();
-        
+
+            if (userChoice === undefined) {
+                stop();
+                console.log("If you'd like to play again, please reload the page or call startGame()");
+                alert("If you'd like to play again, please reload the page"); 
+            } else {        
             getWinner(userChoice, computerChoice);
             startGame(); // restarts game perpetually so the user does not need to reload
+            }
         }
         
         startGame(); // starts game on reload/load
