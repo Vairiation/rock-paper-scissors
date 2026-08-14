@@ -89,7 +89,14 @@
             }
         }
         
-        playRound(); // starts game on reload/load
+        function startGame() {
+            let userScore = 0;
+            let computerScore = 0;
+
+            playRound();
+        }
+
+        startGame(); // starts game on reload/load
     </script>
 </body>
 </html>
