@@ -105,6 +105,18 @@
                 playRound();
                 console.log(`User: ${userScore} | Computer: ${computerScore}`);
             }
+            console.log(`Final Score: User: ${userScore} | Computer: ${computerScore} | Ties: ${5 - userScore - computerScore}`);
+            alert(`Final Score: User: ${userScore} | Computer: ${computerScore} | Ties: ${5 - userScore - computerScore}`);
+           if (userScore > computerScore) {
+                console.log('Congrats! You beat the computer!');
+                alert('Congrats! You beat the computer!');
+            } else if (userScore < computerScore) {
+                console.log('Bummer! You lost to a computer...');
+                alert('Bummer! You lost to a computer...');
+            } else {
+                console.log('Looks like you tied with the computer. Should that be a compliment?');
+                alert('Looks like you tied with the computer. Should that be a compliment?');
+           }
         }
 
         startGame(); // starts game on reload/load
