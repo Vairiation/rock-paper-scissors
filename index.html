@@ -17,12 +17,8 @@
         function getUserChoice() {
             const userChoice = prompt('Rock, Paper, or Scissors?')?.toLowerCase(); // ?. is Optional Chaining: If the object accessed or function called using this operator is undefined or null, the expression short circuits and evaluates to undefined instead of throwing an error.
 
-            if (userChoice === 'rock') {
-                return 1;
-            } else if (userChoice === 'paper') {
-                return 2;
-            } else if (userChoice === 'scissors') {
-                return 3;
+            if (userChoice === 'rock' || userChoice === 'paper' || userChoice === 'scissors') {
+                return userChoice;
             } else if (userChoice === undefined) {
                 stop();
             } else {
@@ -30,46 +26,49 @@
                return getUserChoice(); //restarts prompt if invalid option is chosen
             }            
         }
+        
+        function getComputerChoice() {
+            const randomNumber = Math.floor(Math.random()*3 + 1); // computer chooses randomly
+            
+            if (randomNumber === 1) {
+                return 'rock';
+            } else if (randomNumber === 2) {
+                return 'paper';
+            } else if (randomNumber === 3) {
+                return 'scissors'
+            }
+        }
 
         function getWinner(userChoice, computerChoice) {
-            if (userChoice === 1) {
-                if (computerChoice === 1) { // both rock
+            if (userChoice === computerChoice) {
                 console.log('Tie! You both chose Rock');
-                } else if (computerChoice === 3) { //computer chooses scissors
-                    console.log('You won! Rock beats Scissors');
-                    userScore += 1;
-                } else if (computerChoice === 2) { // computer chooses paper
-                    console.log('You lost! Paper beats rock');
-                    computerScore += 1;
-                }
-            } else if (userChoice === 2) {
-                if (computerChoice === 2) { // both paper
-                    console.log('Tie! You both chose Paper');
-                } else if (computerChoice === 1) { //computer chooses rock
-                    console.log('You won! Paper beats Rock');
-                    userScore += 1;
-                } else if (computerChoice === 3) { // computer chooses scissors
-                    console.log('You lost! Scissors beats Paper');
-                    computerScore += 1;
-                }
-            } else if (userChoice === 3) {
-                if (computerChoice === 3) { // both scissors
-                    console.log('Tie! You both chose Scissors');
-                } else if (computerChoice === 2) { //computer chooses paper
-                    console.log('You won! Scissors beats Paper');
-                    userScore += 1;
-                } else if (computerChoice === 1) { // computer chooses rock
-                    console.log('You lost! Rock beats Scissors');
-                    computerScore += 1;
-                }
+            } else if (userChoice === 'rock' && computerChoice === 'scissors') {
+                console.log('You won! Rock beats Scissors');
+                userScore += 1
+            } else if (userChoice === 'paper' && computerChoice === 'rock') {
+                console.log('You won! Paper beats Rock');
+                userScore += 1;
+            } else if (userChoice === 'scissors' && computerChoice === 'paper') {
+                console.log('You won! Scissors beats Paper');
+                userScore += 1;
+            } else if (userChoice === 'rock' && computerChoice === 'paper') {
+                console.log('You lost! Paper beats rock');
+                computerScore += 1
+            } else if (userChoice === 'paper' && computerChoice === 'scissors') {
+                console.log('You lost! Scissors beats Paper');
+                computerScore += 1;
+            } else if (userChoice === 'scissors' && computerChoice === 'rock') {
+                console.log('You lost! Rock beats Scissors');
+                computerScore += 1
             } else {
                 alert('Invalid, please reload the page');
                 console.log('Invalid, please reload the page');
             }
-        }        
+        }
+ 
         function playRound() {
             const userChoice = getUserChoice();
-            const computerChoice = Math.floor(Math.random()*3 + 1); // computer chooses randomly
+            const computerChoice = getComputerChoice();
 
             if (userChoice === undefined) {
                 console.log("If you'd like to play again, please reload the page or call playRound()");
@@ -86,7 +85,7 @@
             computerScore = 0;
             
             for (let i = 0; i <= 4; i++) {
-                if (!playRound()) {
+                if (!playRound()) { //if user cancels (playRound() returns false), stops the loop
                     return;
                 } else {
                     console.log(`User: ${userScore} | Computer: ${computerScore}`);
