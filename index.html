@@ -34,28 +34,36 @@
                 return 'scissors'
             }
         }
+        
+        function returnTie(userChoice, computerChoice) {
+            console.log(`Tie, you both chose ${userChoice}!`);
+        }
+        
+        function returnWin(userChoice, computerChoice) {
+            console.log(`You won, ${userChoice} beats ${computerChoice}!`);
+            userScore += 1;
+        }
+        
+        function returnLost(userChoice, computerChoice) {
+            console.log(`You lost, ${userChoice} loses to ${computerChoice}...`);
+            computerScore += 1;
+        }
 
         function getWinner(userChoice, computerChoice) {
             if (userChoice === computerChoice) {
-                console.log('Tie! You both chose Rock');
+                returnTie(userChoice, computerChoice);
             } else if (userChoice === 'rock' && computerChoice === 'scissors') {
-                console.log('You won! Rock beats Scissors');
-                userScore += 1
+                returnWin(userChoice, computerChoice);
             } else if (userChoice === 'paper' && computerChoice === 'rock') {
-                console.log('You won! Paper beats Rock');
-                userScore += 1;
+                returnWin(userChoice, computerChoice);
             } else if (userChoice === 'scissors' && computerChoice === 'paper') {
-                console.log('You won! Scissors beats Paper');
-                userScore += 1;
+                returnWin(userChoice, computerChoice);
             } else if (userChoice === 'rock' && computerChoice === 'paper') {
-                console.log('You lost! Paper beats rock');
-                computerScore += 1
+                returnLost(userChoice, computerChoice);
             } else if (userChoice === 'paper' && computerChoice === 'scissors') {
-                console.log('You lost! Scissors beats Paper');
-                computerScore += 1;
+                returnLost(userChoice, computerChoice);
             } else if (userChoice === 'scissors' && computerChoice === 'rock') {
-                console.log('You lost! Rock beats Scissors');
-                computerScore += 1
+                returnLost(userChoice, computerChoice);
             } else {
                 alert('Invalid, please reload the page');
                 console.log('Invalid, please reload the page');
