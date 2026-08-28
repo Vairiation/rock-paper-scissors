@@ -1,0 +1,15 @@
+:root {
+    --background: #FFFCF9;
+    --primary: #E66E1C;
+    --secondary: #8bf2ae;
+    --accent: #48e1eb;
+}
+
+body {
+    display: flex;
+    margin: auto;
+    padding: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--background);
+}
