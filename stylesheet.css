@@ -16,19 +16,43 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;;
+    justify-content: center;
+    height: 100vh;
 }
 
 .selectionContainer {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    align-items: center;
+    align-content: center;
     width: 50vw;
     background-color: var(--primary);
+    border-radius: 4vh;
 }
 
 .choiceContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+button {
+    border-radius: 4vh; 
+    border: 0.5vh solid var(--secondary);
     padding: 8px;
     margin: 8px;
     background-color: var(--secondary);
+    transition-duration: 300ms;
+}
+
+button:hover {
+    background-color: transparent;
+    border: 0.5vh solid var(--secondary);
+}
+
+img {
+    height: 20vh;
+    width: auto;
 }
