@@ -1,8 +1,12 @@
 :root {
-    --background: #FFFCF9;
-    --primary: #E66E1C;
-    --secondary: #8bf2ae;
-    --accent: #48e1eb;
+    /* --background: #FFFCF9; */
+    --background: hsl(140, 80%, 75%);
+    --background-darker: hsl(140, 80%, 35%);
+    --primary: hsl(24, 80%, 51%);
+    --primary-lighter: hsl(24, 80%, 61%);
+    /* --secondary: #8bf2ae; */
+    --secondary: hsl(184, 80%, 60%);
+    /* --accent: #48e1eb; */
 }
 
 body {
@@ -10,24 +14,44 @@ body {
     width: 100vw;
     height: 100vh;
     background-color: var(--background);
+    margin: 0;
+    padding: 0;
 }
 
 #mainContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    height: 100vh;
+    margin: 0;
+}
+
+#header {
+    background-color: var(--background-darker);
+    width: 100vw;
+    margin: 0;
+    padding: 0px;
+    text-align: center;
+    color: #FFFCF9;
+}
+
+#contentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
     height: 100vh;
 }
 
 .selectionContainer {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     align-content: center;
-    width: 50vw;
-    background-color: var(--primary);
+    width: 75vw;
+    /* background-color: var(--primary); */
     border-radius: 4vh;
 }
 
@@ -40,16 +64,18 @@ body {
 
 button {
     border-radius: 4vh; 
-    border: 0.5vh solid var(--secondary);
+    border: 0.5vh solid var(--primary);
     padding: 8px;
     margin: 8px;
-    background-color: var(--secondary);
+    background-color: var(--primary-lighter);
+    /* box-shadow: 2px 4px 2px black; */
     transition-duration: 300ms;
 }
 
 button:hover {
-    background-color: transparent;
-    border: 0.5vh solid var(--secondary);
+    background-color: var(--primary);
+    border: 0.5vh solid var(--primary);
+    box-shadow: 2px 4px 2px black;
 }
 
 img {
