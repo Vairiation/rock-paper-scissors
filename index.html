@@ -16,26 +16,44 @@
         </div>
         <div id='contentContainer'>
             <div>
-                <p>This is a Placeholder Para</p>
+                <h5>Are you ready to play? Click the Start Button to play best 3 of 5</h5>
             </div>
-            <div class='selectionContainer'>
-                <div class='choiceContainer'>
-                    <button>
-                        <img src='images/rock.png'>
-                    </button>
+            <div class='gameContainer'>
+                <div class='selectionContainer'>
+                    <div class='choiceContainer'>
+                        <button>
+                            <img src='images/rock.png'>
+                        </button>
+                    </div>
+                    <div class='choiceContainer'>
+                        <button>
+                            <img src='images/paper.png'>
+                        </button>
+                    </div>
+                    <div class='choiceContainer'>
+                        <button>
+                            <img src='images/scissors.png'>
+                        </button>
+                    </div>
                 </div>
-                <div class='choiceContainer'>
-                    <button>
-                        <img src='images/paper.png'>
-                    </button>
+                <div class='resultsContainer'>
+                    <button class='startButton'>Start Game</button>
+                    <div class='roundCount'>
+                        <h5>Round 3</h5>
+                    </div>
+                    <div class='result'>
+                        <h3>You Won!</h3>
+                    </div>
                 </div>
-                <div class='choiceContainer'>
-                    <button>
-                        <img src='images/scissors.png'>
-                    </button>
+                <div class='computerContainer'>
+                    <div class='computerChoice'>
+                        <img src="images/paper.png">
+                    </div>
                 </div>
             </div>
-            <div id='instructions'>Here are where the instructions will go</div>
+            <div class='score'>
+                <h4>You: 2 | Computer: 1</h4>
+            </div>
         </div>
     </div>
     <script>

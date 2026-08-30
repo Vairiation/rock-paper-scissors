@@ -20,6 +20,7 @@ body {
     font-weight: 400;
     font-style: normal;
     font-size: x-large;
+    text-align: center;
 }
 
 #mainContainer {
@@ -36,7 +37,6 @@ body {
     width: 100vw;
     margin: 0;
     padding: 0px;
-    text-align: center;
     color: var(--primary);
     font-weight: 800;
     font-size: xx-large;
@@ -50,13 +50,20 @@ body {
     height: 100vh;
 }
 
+.gameContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100vw;
+    margin: 0;
+}
+
 .selectionContainer {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: column wrap;
     justify-content: space-around;
     align-items: center;
     align-content: center;
-    width: 75vw;
     border-radius: 4vh;
 }
 
@@ -80,6 +87,35 @@ button:hover {
     background-color: var(--primary);
     border: 0.5vh solid var(--primary);
     box-shadow: 2px 4px 2px black;
+    color: var(--primary-lighter);
+}
+
+.resultsContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-evenly;
+    align-content: space-evenly;
+}
+
+.startButton {
+    font-size: xx-large;
+    font-family: "Rubik Iso", system-ui;
+    font-weight: 600;
+}
+
+.computerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.computerChoice {
+    border-radius: 4vh; 
+    border: 0.5vh solid var(--secondary);
+    padding: 8px;
+    margin: 8px;
+    background-color: var(--secondary);
 }
 
 img {
