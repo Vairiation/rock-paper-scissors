@@ -1,6 +1,8 @@
 let userScore = 0;
 let computerScore = 0;
 
+const startBtn = document.querySelector('.startButton');
+
 function getUserChoice() {
     const userChoice = prompt('Rock, Paper, or Scissors?')?.toLowerCase(); // ?. is Optional Chaining: If the object accessed or function called using this operator is undefined or null, the expression short circuits and evaluates to undefined instead of throwing an error.
 
@@ -75,10 +77,43 @@ function playRound() {
     }
 }
 
+function createChoiceButtons() {
+    const selectionContainer = document.querySelector('.selectionContainer');
+    const rockBtn = document.createElement('button');
+    const paperBtn = document.createElement('button');
+    const scissorsBtn = document.createElement('button'); 
+    
+    const rockImg = document.createElement('img');
+    const paperImg = document.createElement('img');
+    const scissorsImg = document.createElement('img');
+    
+    rockImg.src = 'images/rock.png';
+    rockImg.alt = 'Rock';
+    rockImg.title = 'Button for selecting Rock';
+    
+    paperImg.src = 'images/paper.png';
+    paperImg.alt = 'Paper';
+    paperImg.title = 'Button for selecting Paper';
+    
+    scissorsImg.src = 'images/scissors.png';
+    scissorsImg.alt = 'Scissors';
+    scissorsImg.title = 'Button for selecting Scissors';
+
+    rockBtn.appendChild(rockImg);
+    paperBtn.appendChild(paperImg);
+    scissorsBtn.appendChild(scissorsImg);
+
+    selectionContainer.appendChild(rockBtn);
+    selectionContainer.appendChild(paperBtn);
+    selectionContainer.appendChild(scissorsBtn);
+}
+
+createChoiceButtons();
+
 function startGame() {
     userScore = 0;
     computerScore = 0;
-    
+
     for (let i = 0; i <= 4; i++) {
         if (!playRound()) { //if user cancels (playRound() returns false), stops the loop
             return;
@@ -100,4 +135,4 @@ function startGame() {
     }
 }
 
-// startGame(); // starts game on reload/load
+startBtn.addEventListener('click', startGame);

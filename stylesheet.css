@@ -67,13 +67,6 @@ body {
     border-radius: 4vh;
 }
 
-.choiceContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: auto;
-}
-
 button {
     border-radius: 4vh; 
     border: 0.5vh solid var(--primary-lighter);
