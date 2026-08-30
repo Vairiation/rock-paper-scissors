@@ -1,9 +1,9 @@
 :root {
     /* --background: #FFFCF9; */
     --background: hsl(140, 80%, 75%);
-    --background-darker: hsl(140, 80%, 35%);
+    --background-darker: hsl(140, 80%, 70%);
     --primary: hsl(24, 80%, 51%);
-    --primary-lighter: hsl(24, 80%, 61%);
+    --primary-lighter: hsl(24, 80%, 95%);
     /* --secondary: #8bf2ae; */
     --secondary: hsl(184, 80%, 60%);
     /* --accent: #48e1eb; */
@@ -16,6 +16,10 @@ body {
     background-color: var(--background);
     margin: 0;
     padding: 0;
+    font-family: "Rubik Iso", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: x-large;
 }
 
 #mainContainer {
@@ -28,12 +32,14 @@ body {
 }
 
 #header {
-    background-color: var(--background-darker);
+    background-color: var(--background);
     width: 100vw;
     margin: 0;
     padding: 0px;
     text-align: center;
-    color: #FFFCF9;
+    color: var(--primary);
+    font-weight: 800;
+    font-size: xx-large;
 }
 
 #contentContainer {
@@ -51,7 +57,6 @@ body {
     align-items: center;
     align-content: center;
     width: 75vw;
-    /* background-color: var(--primary); */
     border-radius: 4vh;
 }
 
@@ -64,12 +69,11 @@ body {
 
 button {
     border-radius: 4vh; 
-    border: 0.5vh solid var(--primary);
+    border: 0.5vh solid var(--primary-lighter);
     padding: 8px;
     margin: 8px;
     background-color: var(--primary-lighter);
-    /* box-shadow: 2px 4px 2px black; */
-    transition-duration: 300ms;
+    transition-duration: 100ms;
 }
 
 button:hover {
@@ -79,6 +83,6 @@ button:hover {
 }
 
 img {
-    height: 20vh;
+    height: 10vh;
     width: auto;
 }
