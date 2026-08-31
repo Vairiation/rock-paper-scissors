@@ -70,6 +70,7 @@ function playRound(userChoice) {
     
     showComputerChoice(computerChoice);
     getWinner(userChoice, computerChoice);
+    showScore(userScore, computerScore);
 }
 
 function createChoiceButtons() {
@@ -94,6 +95,18 @@ function createChoiceButtons() {
     });
 }
 
+function showScore(userScore, computerScore) {
+    const contentContainer = document.querySelector('.contentContainer');
+    const score = document.createElement('h4');
+
+    if (document.querySelector('.score')) {
+        document.querySelector('.score').remove();
+    }
+
+    score.className = 'score';
+    score.innerText = `User: ${userScore} | Computer: ${computerScore}`;
+    contentContainer.appendChild(score);
+}
 
 function startGame() {
     userScore = 0;
