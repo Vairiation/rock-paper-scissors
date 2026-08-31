@@ -33,35 +33,42 @@ function showComputerChoice(choice) {
     computerContainer.appendChild(computerChoice);
 }
 
-function returnTie(userChoice, computerChoice) {
-    console.log(`Tie, you both chose ${userChoice}!`);
-}
+function returnResult(status, userChoice, computerChoice) {
+    const resultsContainer = document.querySelector('.resultsContainer');
+    const result = document.createElement('h3');
+    
+    if (document.querySelector('.result')) {
+        document.querySelector('.result').remove();
+    }
+    
+    result.className = 'result';
 
-function returnWin(userChoice, computerChoice) {
-    console.log(`You won, ${userChoice} beats ${computerChoice}!`);
-    userScore += 1;
-}
-
-function returnLost(userChoice, computerChoice) {
-    console.log(`You lost, ${userChoice} loses to ${computerChoice}...`);
-    computerScore += 1;
+    if (status === 'win') {
+        result.innerText = `You won, ${userChoice} beats ${computerChoice}!`;
+        userScore += 1;
+    } else if (status === 'lose') {
+        result.innerText = `You lost, ${computerChoice} beats ${userChoice}.`
+        computerScore += 1;
+    } else result.innerText = 'Tie!';
+    
+    resultsContainer.appendChild(result);
 }
 
 function getWinner(userChoice, computerChoice) {
     if (userChoice === computerChoice) {
-        returnTie(userChoice, computerChoice);
+        returnResult('tie', userChoice, computerChoice);
     } else if (userChoice === 'rock' && computerChoice === 'scissors') {
-        returnWin(userChoice, computerChoice);
+        returnResult('win', userChoice, computerChoice);
     } else if (userChoice === 'paper' && computerChoice === 'rock') {
-        returnWin(userChoice, computerChoice);
+        returnResult('win', userChoice, computerChoice);
     } else if (userChoice === 'scissors' && computerChoice === 'paper') {
-        returnWin(userChoice, computerChoice);
+        returnResult('win', userChoice, computerChoice);
     } else if (userChoice === 'rock' && computerChoice === 'paper') {
-        returnLost(userChoice, computerChoice);
+        returnResult('lose', userChoice, computerChoice);
     } else if (userChoice === 'paper' && computerChoice === 'scissors') {
-        returnLost(userChoice, computerChoice);
+        returnResult('lose', userChoice, computerChoice);
     } else if (userChoice === 'scissors' && computerChoice === 'rock') {
-        returnLost(userChoice, computerChoice);
+        returnResult('lose', userChoice, computerChoice);
     }
 }
 
