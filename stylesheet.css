@@ -1,18 +1,21 @@
 :root {
-    /* --background: #FFFCF9; */
     --background: hsl(140, 80%, 75%);
     --background-darker: hsl(140, 80%, 70%);
     --primary: hsl(24, 80%, 51%);
     --primary-lighter: hsl(24, 80%, 95%);
-    /* --secondary: #8bf2ae; */
     --secondary: hsl(184, 80%, 60%);
-    /* --accent: #48e1eb; */
+}
+
+@media (min-width: 48rem) {
+    .gameContainer {
+        max-width: 75vw;
+    }
 }
 
 body {
     box-sizing: border-box;
-    width: 100vw;
-    height: 100vh;
+    width: auto;
+    height: auto;
     background-color: var(--background);
     margin: 0;
     padding: 0;
@@ -28,13 +31,13 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 100vh;
     margin: 0;
 }
 
 .header {
     background-color: var(--background);
-    width: 100vw;
+    height: 30vh;
+    width: 100%;
     margin: 0;
     padding: 0px;
     color: var(--primary);
@@ -47,13 +50,12 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
-    height: 100vh;
+    height: 70vh;
 }
 
 .gameContainer {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
     width: 100vw;
     margin: 0;
 }
@@ -85,9 +87,8 @@ button:hover {
 
 .resultsContainer {
     display: flex;
-    flex-direction: column;
+    flex-flow: column wrap;
     justify-content: center;
-    align-items: space-evenly;
     align-content: space-evenly;
 }
 
@@ -109,6 +110,15 @@ button:hover {
     padding: 8px;
     margin: 8px;
     background-color: var(--secondary);
+}
+
+.roundCount {
+    font-size: x-large;
+    margin: 0;
+}
+
+.score {
+    margin: 0;
 }
 
 img {
