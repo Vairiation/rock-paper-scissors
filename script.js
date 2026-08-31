@@ -3,6 +3,7 @@ let computerScore;
 let round;
 
 const startBtn = document.querySelector('.startButton');
+const intro = document.querySelector('.introMessage');
 
 function getComputerChoice() {
     const randomNumber = Math.floor(Math.random()*3 + 1); // computer chooses randomly
@@ -74,7 +75,7 @@ function getWinner(userChoice, computerChoice) {
 }
 
 function showRound(){
-    const resultsContainer = document.querySelector('.resultsContainer');
+    const intro = document.querySelector('.intro');
     const roundCount = document.createElement('h5');
 
     if (document.querySelector('.roundCount')) {
@@ -83,7 +84,7 @@ function showRound(){
     
     roundCount.className = 'roundCount';
     roundCount.innerText = `Round ${round}`;
-    resultsContainer.appendChild(roundCount);
+    intro.appendChild(roundCount);
 }
 
 function playRound(userChoice) {
@@ -137,9 +138,11 @@ function startGame() {
     round = 1;
 
     startBtn.remove();
+    intro.remove();
 
-    createChoiceButtons();
     showRound();
+    showScore(userScore, computerScore);
+    createChoiceButtons();
 }
 
 startBtn.addEventListener('click', startGame);
