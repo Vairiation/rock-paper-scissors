@@ -3,18 +3,18 @@ let computerScore = 0;
 
 const startBtn = document.querySelector('.startButton');
 
-function getUserChoice() {
-    const userChoice = prompt('Rock, Paper, or Scissors?')?.toLowerCase(); // ?. is Optional Chaining: If the object accessed or function called using this operator is undefined or null, the expression short circuits and evaluates to undefined instead of throwing an error.
+// function getUserChoice() {
+//     const userChoice = prompt('Rock, Paper, or Scissors?')?.toLowerCase(); // ?. is Optional Chaining: If the object accessed or function called using this operator is undefined or null, the expression short circuits and evaluates to undefined instead of throwing an error.
 
-    if (userChoice === 'rock' || userChoice === 'paper' || userChoice === 'scissors') {
-        return userChoice;
-    } else if (userChoice === undefined) {
-        stop();
-    } else {
-        alert('Please choose a valid option');
-        return getUserChoice(); //restarts prompt if invalid option is chosen
-    }            
-}
+//     if (userChoice === 'rock' || userChoice === 'paper' || userChoice === 'scissors') {
+//         return userChoice;
+//     } else if (userChoice === undefined) {
+//         stop();
+//     } else {
+//         alert('Please choose a valid option');
+//         return getUserChoice(); //restarts prompt if invalid option is chosen
+//     }            
+// }
 
 function getComputerChoice() {
     const randomNumber = Math.floor(Math.random()*3 + 1); // computer chooses randomly
@@ -63,8 +63,10 @@ function getWinner(userChoice, computerChoice) {
     }
 }
 
-function playRound() {
-    const userChoice = getUserChoice();
+async function playRound() {
+    let promise = new Promise(() => {
+    });
+    const userChoice = await promise;
     const computerChoice = getComputerChoice();
 
     if (userChoice === undefined) {
@@ -79,40 +81,29 @@ function playRound() {
 
 function createChoiceButtons() {
     const selectionContainer = document.querySelector('.selectionContainer');
-    const rockBtn = document.createElement('button');
-    const paperBtn = document.createElement('button');
-    const scissorsBtn = document.createElement('button'); 
-    
-    const rockImg = document.createElement('img');
-    const paperImg = document.createElement('img');
-    const scissorsImg = document.createElement('img');
-    
-    rockImg.src = 'images/rock.png';
-    rockImg.alt = 'Rock';
-    rockImg.title = 'Button for selecting Rock';
-    
-    paperImg.src = 'images/paper.png';
-    paperImg.alt = 'Paper';
-    paperImg.title = 'Button for selecting Paper';
-    
-    scissorsImg.src = 'images/scissors.png';
-    scissorsImg.alt = 'Scissors';
-    scissorsImg.title = 'Button for selecting Scissors';
+    const choices = ['rock', 'paper', 'scissors'];
 
-    rockBtn.appendChild(rockImg);
-    paperBtn.appendChild(paperImg);
-    scissorsBtn.appendChild(scissorsImg);
+    choices.forEach((choice) => {
+        const btn = document.createElement('button');
+        const img = document.createElement('img');
+        
+        img.src = `images/${choice}.png`;
+        img.alt = choice;
+        img.title = `Button for selecting ${choice}`;
 
-    selectionContainer.appendChild(rockBtn);
-    selectionContainer.appendChild(paperBtn);
-    selectionContainer.appendChild(scissorsBtn);
+        btn.appendChild(img);
+        selectionContainer.appendChild(btn);
+    });
 }
 
-createChoiceButtons();
 
 function startGame() {
     userScore = 0;
     computerScore = 0;
+
+    startBtn.remove();
+
+    createChoiceButtons();
 
     for (let i = 0; i <= 4; i++) {
         if (!playRound()) { //if user cancels (playRound() returns false), stops the loop
