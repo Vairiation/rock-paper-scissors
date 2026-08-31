@@ -3,19 +3,6 @@ let computerScore = 0;
 
 const startBtn = document.querySelector('.startButton');
 
-// function getUserChoice() {
-//     const userChoice = prompt('Rock, Paper, or Scissors?')?.toLowerCase(); // ?. is Optional Chaining: If the object accessed or function called using this operator is undefined or null, the expression short circuits and evaluates to undefined instead of throwing an error.
-
-//     if (userChoice === 'rock' || userChoice === 'paper' || userChoice === 'scissors') {
-//         return userChoice;
-//     } else if (userChoice === undefined) {
-//         stop();
-//     } else {
-//         alert('Please choose a valid option');
-//         return getUserChoice(); //restarts prompt if invalid option is chosen
-//     }            
-// }
-
 function getComputerChoice() {
     const randomNumber = Math.floor(Math.random()*3 + 1); // computer chooses randomly
     
@@ -26,6 +13,24 @@ function getComputerChoice() {
     } else if (randomNumber === 3) {
         return 'scissors'
     }
+}
+
+function showComputerChoice(choice) {
+    // const choices = ['rock', 'paper', 'scissors'];
+    const computerContainer = document.querySelector('.computerContainer');
+    const computerChoice = document.createElement('div');
+    const img = document.createElement('img');
+    
+    if (computerContainer.hasChildNodes) {
+        computerContainer.removeChild(computerContainer.firstChild);
+    }
+
+    computerChoice.className = 'computerChoice';
+    img.src = `images/${choice}.png`;
+    img.alt = choice;
+    img.title = `The computer chose ${choice}`;
+    computerChoice.appendChild(img);
+    computerContainer.appendChild(computerChoice);
 }
 
 function returnTie(userChoice, computerChoice) {
@@ -57,26 +62,14 @@ function getWinner(userChoice, computerChoice) {
         returnLost(userChoice, computerChoice);
     } else if (userChoice === 'scissors' && computerChoice === 'rock') {
         returnLost(userChoice, computerChoice);
-    } else {
-        alert('Invalid, please reload the page');
-        console.log('Invalid, please reload the page');
     }
 }
 
-async function playRound() {
-    let promise = new Promise(() => {
-    });
-    const userChoice = await promise;
+function playRound(userChoice) {
     const computerChoice = getComputerChoice();
-
-    if (userChoice === undefined) {
-        console.log("If you'd like to play again, please reload the page or call playRound()");
-        alert("If you'd like to play again, please reload the page"); 
-        return false;
-    } else {        
+    
+    showComputerChoice(computerChoice);
     getWinner(userChoice, computerChoice);
-        return true;
-    }
 }
 
 function createChoiceButtons() {
@@ -92,6 +85,11 @@ function createChoiceButtons() {
         img.title = `Button for selecting ${choice}`;
 
         btn.appendChild(img);
+        
+        btn.addEventListener('click', () => {
+            playRound(choice);
+        })
+
         selectionContainer.appendChild(btn);
     });
 }
@@ -104,26 +102,6 @@ function startGame() {
     startBtn.remove();
 
     createChoiceButtons();
-
-    for (let i = 0; i <= 4; i++) {
-        if (!playRound()) { //if user cancels (playRound() returns false), stops the loop
-            return;
-        } else {
-            console.log(`User: ${userScore} | Computer: ${computerScore}`);
-        }
-    }
-    console.log(`Final Score: User: ${userScore} | Computer: ${computerScore} | Ties: ${5 - userScore - computerScore}`);
-    alert(`Final Score: User: ${userScore} | Computer: ${computerScore} | Ties: ${5 - userScore - computerScore}`);
-    if (userScore > computerScore) {
-        console.log('Congrats! You beat the computer!');
-        alert('Congrats! You beat the computer!');
-    } else if (userScore < computerScore) {
-        console.log('Bummer! You lost to a computer...');
-        alert('Bummer! You lost to a computer...');
-    } else {
-        console.log('Looks like you tied with the computer. Should that be a compliment?');
-        alert('Looks like you tied with the computer. Should that be a compliment?');
-    }
 }
 
 startBtn.addEventListener('click', startGame);
