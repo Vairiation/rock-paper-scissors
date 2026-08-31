@@ -1,5 +1,6 @@
-let userScore = 0;
-let computerScore = 0;
+let userScore;
+let computerScore;
+let round;
 
 const startBtn = document.querySelector('.startButton');
 
@@ -72,9 +73,23 @@ function getWinner(userChoice, computerChoice) {
     }
 }
 
+function showRound(){
+    const resultsContainer = document.querySelector('.resultsContainer');
+    const roundCount = document.createElement('h5');
+
+    if (document.querySelector('.roundCount')) {
+        document.querySelector('.roundCount').remove();
+    }
+    
+    roundCount.className = 'roundCount';
+    roundCount.innerText = `Round ${round}`;
+    resultsContainer.appendChild(roundCount);
+}
+
 function playRound(userChoice) {
     const computerChoice = getComputerChoice();
     
+    showRound();
     showComputerChoice(computerChoice);
     getWinner(userChoice, computerChoice);
     showScore(userScore, computerScore);
@@ -96,6 +111,7 @@ function createChoiceButtons() {
         
         btn.addEventListener('click', () => {
             playRound(choice);
+            round += 1;
         })
 
         selectionContainer.appendChild(btn);
@@ -118,10 +134,12 @@ function showScore(userScore, computerScore) {
 function startGame() {
     userScore = 0;
     computerScore = 0;
+    round = 1;
 
     startBtn.remove();
 
     createChoiceButtons();
+    showRound();
 }
 
 startBtn.addEventListener('click', startGame);
