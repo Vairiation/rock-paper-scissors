@@ -37,11 +37,12 @@ function showComputerChoice(choice) {
 
 function returnResult(status, userChoice, computerChoice) {
     const resultsContainer = document.querySelector('.resultsContainer');
+    const instructions = document.querySelector('.instructions');
     const result = document.createElement('h3');
     
     if (document.querySelector('.result')) {
         document.querySelector('.result').remove();
-    }
+    } else if (instructions) instructions.remove();
     
     result.className = 'result';
 
@@ -118,6 +119,7 @@ function createChoiceButtons() {
 
         selectionContainer.appendChild(btn);
     });
+    showInstructions();
 }
 
 function showScore(userScore, computerScore) {
@@ -131,6 +133,15 @@ function showScore(userScore, computerScore) {
     score.className = 'score';
     score.innerText = `User: ${userScore} | Computer: ${computerScore}`;
     contentContainer.appendChild(score);
+}
+
+function showInstructions() {
+    const resultsContainer = document.querySelector('.resultsContainer');
+    const instructions = document.createElement('h3');
+
+    instructions.className = 'instructions';
+    instructions.innerText = 'Please Choose Rock, Paper, or Scissors';
+    resultsContainer.appendChild(instructions);
 }
 
 function checkGameOver() {
