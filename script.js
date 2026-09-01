@@ -23,7 +23,7 @@ function showComputerChoice(choice) {
     const computerChoice = document.createElement('div');
     const img = document.createElement('img');
     
-    if (computerContainer.hasChildNodes) {
+    if (computerContainer.firstChild) {
         computerContainer.removeChild(computerContainer.firstChild);
     }
 
@@ -94,6 +94,7 @@ function playRound(userChoice) {
     showComputerChoice(computerChoice);
     getWinner(userChoice, computerChoice);
     showScore(userScore, computerScore);
+    checkGameOver();
 }
 
 function createChoiceButtons() {
@@ -130,6 +131,45 @@ function showScore(userScore, computerScore) {
     score.className = 'score';
     score.innerText = `User: ${userScore} | Computer: ${computerScore}`;
     contentContainer.appendChild(score);
+}
+
+function checkGameOver() {
+    if (userScore >= 3 || computerScore >= 3) {
+        stopGame()
+    }
+}
+
+function stopGame() {
+    const choiceButtons = document.querySelectorAll('button');
+    const computerChoice = document.querySelector('.computerChoice');
+    const roundCount = document.querySelector('.roundCount');
+    const score = document.querySelector('.score');
+    const resultsContainer = document.querySelector('.resultsContainer');
+    const result = document.querySelector('.result');
+    const resetBtn = document.createElement('button');
+
+    choiceButtons.forEach((btn) => {
+        btn.remove();
+    });
+    computerChoice.remove();
+    roundCount.innerText = `Total Game Rounds: ${round}`;
+    score.innerText = `Final Score: User: ${userScore} | Computer: ${computerScore}`;
+    
+    if (userScore > computerScore) {
+        result.innerText = "You won! You're smarter than a computer!"
+    } else result.innerText = 'You lost. You let a computer beat you....';
+
+    resetBtn.className = '.resetBtn';
+    resetBtn.innerText = 'Play Again';
+    resetBtn.addEventListener('click', () => {
+        userScore = 0;
+        computerScore = 0;
+        round = 1;
+        resetBtn.remove();
+        result.innerText = '';
+        startGame()
+    });
+    resultsContainer.appendChild(resetBtn);
 }
 
 function startGame() {
