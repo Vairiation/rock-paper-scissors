@@ -161,7 +161,7 @@ function stopGame() {
         result.innerText = 'You lost. You let a computer beat you....';
     } else result.innerText = "You tied with the computer. At least you didn't lose"
 
-    resetBtn.className = '.resetBtn';
+    resetBtn.className = 'resetBtn';
     resetBtn.innerText = 'Play Again';
     resetBtn.addEventListener('click', () => {
         userScore = 0;

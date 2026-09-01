@@ -92,7 +92,8 @@ button:hover {
     align-content: space-evenly;
 }
 
-.startButton {
+.startButton, .resetBtn {
+    margin: auto;
     font-size: xx-large;
     font-family: "Rubik Iso", system-ui;
     font-weight: 600;
