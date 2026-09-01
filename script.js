@@ -134,7 +134,7 @@ function showScore(userScore, computerScore) {
 }
 
 function checkGameOver() {
-    if (userScore >= 3 || computerScore >= 3) {
+    if (userScore >= 3 || computerScore >= 3 || round >= 5) {
         stopGame()
     }
 }
@@ -157,7 +157,9 @@ function stopGame() {
     
     if (userScore > computerScore) {
         result.innerText = "You won! You're smarter than a computer!"
-    } else result.innerText = 'You lost. You let a computer beat you....';
+    } else if (computerScore > userScore) {
+        result.innerText = 'You lost. You let a computer beat you....';
+    } else result.innerText = "You tied with the computer. At least you didn't lose"
 
     resetBtn.className = '.resetBtn';
     resetBtn.innerText = 'Play Again';
