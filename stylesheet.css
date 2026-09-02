@@ -97,6 +97,12 @@ button:hover {
     color: var(--primary-lighter);
 }
 
+button:active {
+    background-color: var(--primary-lighter);
+    border: 0.5vh solid var(--primary-lighter);
+    box-shadow: 2px 4px 2px black;
+}
+
 .resultsContainer {
     display: flex;
     flex-flow: column wrap;
