@@ -85,7 +85,7 @@ function showRound(){
     }
     
     roundCount.className = 'roundCount';
-    roundCount.innerText = `Round ${round}`;
+    roundCount.innerText = `Round ${round + 1}`;
     intro.appendChild(roundCount);
 }
 
@@ -96,6 +96,7 @@ function playRound(userChoice) {
     showComputerChoice(computerChoice);
     getWinner(userChoice, computerChoice);
     showScore(userScore, computerScore);
+    round += 1;
     checkGameOver();
 }
 
@@ -115,7 +116,6 @@ function createChoiceButtons() {
         
         btn.addEventListener('click', () => {
             playRound(choice);
-            round += 1;
         })
 
         selectionContainer.appendChild(btn);
@@ -163,33 +163,32 @@ function stopGame() {
     choiceButtons.forEach((btn) => {
         btn.remove();
     });
-    computerChoice.remove();
-    roundCount.innerText = `Total Game Rounds: ${round}`;
-    score.innerText = `Final Score: User: ${userScore} | Computer: ${computerScore}`;
-    
-    if (userScore > computerScore) {
-        result.innerText = "You won! You're smarter than a computer!"
-    } else if (computerScore > userScore) {
-        result.innerText = 'You lost. You let a computer beat you....';
-    } else result.innerText = "You tied with the computer. At least you didn't lose"
+    setTimeout(() => {
+        computerChoice.remove();
+        roundCount.innerText = `Total Game Rounds: ${round}`;
+        score.innerText = `Final Score: User: ${userScore} | Computer: ${computerScore}`;
+        
+        if (userScore > computerScore) {
+            result.innerText = "You won! You're smarter than a computer!"
+        } else if (computerScore > userScore) {
+            result.innerText = 'You lost. You let a computer beat you....';
+        } else result.innerText = "You tied with the computer. At least you didn't lose"
 
-    resetBtn.className = 'resetBtn';
-    resetBtn.innerText = 'Play Again';
-    resetBtn.addEventListener('click', () => {
-        userScore = 0;
-        computerScore = 0;
-        round = 1;
-        resetBtn.remove();
-        result.innerText = '';
-        startGame()
-    });
-    resultsContainer.appendChild(resetBtn);
+        resetBtn.className = 'resetBtn';
+        resetBtn.innerText = 'Play Again';
+        resetBtn.addEventListener('click', () => {
+            resetBtn.remove();
+            result.innerText = '';
+            startGame()
+        });
+        resultsContainer.appendChild(resetBtn);
+    }, 1500)
 }
 
 function startGame() {
     userScore = 0;
     computerScore = 0;
-    round = 1;
+    round = 0;
 
     startBtn.remove();
     intro.remove();
