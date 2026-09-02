@@ -178,7 +178,7 @@ function stopGame() {
         resetBtn.innerText = 'Play Again';
         resetBtn.addEventListener('click', () => {
             resetBtn.remove();
-            result.innerText = '';
+            result.remove();
             startGame()
         });
         resultsContainer.appendChild(resetBtn);
