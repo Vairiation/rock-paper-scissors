@@ -4,17 +4,11 @@ let round;
 
 const startBtn = document.querySelector('.startButton');
 const intro = document.querySelector('.introMessage');
+const CHOICES = ['rock', 'paper', 'scissors'];
 
 function getComputerChoice() {
-    const randomNumber = Math.floor(Math.random()*3 + 1); // computer chooses randomly
-    
-    if (randomNumber === 1) {
-        return 'rock';
-    } else if (randomNumber === 2) {
-        return 'paper';
-    } else if (randomNumber === 3) {
-        return 'scissors'
-    }
+    const randomNumber = Math.floor(Math.random() * CHOICES.length); // computer chooses randomly
+    return CHOICES[randomNumber];
 }
 
 function showComputerChoice(choice) {
@@ -91,9 +85,8 @@ function playRound(userChoice) {
 
 function createChoiceButtons() {
     const selectionContainer = document.querySelector('.selectionContainer');
-    const choices = ['rock', 'paper', 'scissors'];
 
-    choices.forEach((choice) => {
+    CHOICES.forEach((choice) => {
         const btn = document.createElement('button');
         const img = document.createElement('img');
         
