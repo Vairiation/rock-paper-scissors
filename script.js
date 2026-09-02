@@ -42,7 +42,8 @@ function returnResult(status, userChoice, computerChoice) {
     
     if (document.querySelector('.result')) {
         document.querySelector('.result').remove();
-    } else if (instructions) instructions.remove();
+    }
+    if (instructions) instructions.remove();
     
     result.className = 'result';
 
