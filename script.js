@@ -32,10 +32,11 @@ function showComputerChoice(choice) {
     computerContainer.appendChild(computerChoice);
 }
 
-function returnResult(status, userChoice, computerChoice) {
+function returnResult(userChoice, computerChoice) {
     const resultsContainer = document.querySelector('.resultsContainer');
     const instructions = document.querySelector('.instructions');
     const result = document.createElement('h3');
+    const status = getRoundResult(userChoice, computerChoice)
     
     document.querySelector('.result')?.remove();
     instructions?.remove();
@@ -45,7 +46,7 @@ function returnResult(status, userChoice, computerChoice) {
     if (status === 'win') {
         result.innerText = `You won, ${userChoice} beats ${computerChoice}!`;
         userScore += 1;
-    } else if (status === 'lose') {
+    } else if (status === 'loss') {
         result.innerText = `You lost, ${computerChoice} beats ${userChoice}.`
         computerScore += 1;
     } else result.innerText = 'Tie!';
@@ -53,22 +54,17 @@ function returnResult(status, userChoice, computerChoice) {
     resultsContainer.appendChild(result);
 }
 
-function getWinner(userChoice, computerChoice) {
+function getRoundResult(userChoice, computerChoice) {
+    const beats = {
+        rock: 'scissors',
+        paper: 'rock',
+        scissors: 'paper',
+    };
+
     if (userChoice === computerChoice) {
-        returnResult('tie', userChoice, computerChoice);
-    } else if (userChoice === 'rock' && computerChoice === 'scissors') {
-        returnResult('win', userChoice, computerChoice);
-    } else if (userChoice === 'paper' && computerChoice === 'rock') {
-        returnResult('win', userChoice, computerChoice);
-    } else if (userChoice === 'scissors' && computerChoice === 'paper') {
-        returnResult('win', userChoice, computerChoice);
-    } else if (userChoice === 'rock' && computerChoice === 'paper') {
-        returnResult('lose', userChoice, computerChoice);
-    } else if (userChoice === 'paper' && computerChoice === 'scissors') {
-        returnResult('lose', userChoice, computerChoice);
-    } else if (userChoice === 'scissors' && computerChoice === 'rock') {
-        returnResult('lose', userChoice, computerChoice);
+        return 'tie';
     }
+    return (beats[userChoice] === computerChoice) ? 'win' : 'loss';
 }
 
 function showRound(){
@@ -87,7 +83,7 @@ function playRound(userChoice) {
     
     showRound();
     showComputerChoice(computerChoice);
-    getWinner(userChoice, computerChoice);
+    returnResult(userChoice, computerChoice);
     showScore(userScore, computerScore);
     round += 1;
     checkGameOver();
