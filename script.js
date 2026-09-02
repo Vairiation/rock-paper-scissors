@@ -18,14 +18,11 @@ function getComputerChoice() {
 }
 
 function showComputerChoice(choice) {
-    // const choices = ['rock', 'paper', 'scissors'];
     const computerContainer = document.querySelector('.computerContainer');
     const computerChoice = document.createElement('div');
     const img = document.createElement('img');
     
-    if (computerContainer.firstChild) {
-        computerContainer.removeChild(computerContainer.firstChild);
-    }
+    computerContainer.querySelector('.computerChoice')?.remove();
 
     computerChoice.className = 'computerChoice';
     img.src = `images/${choice}.png`;
@@ -40,10 +37,8 @@ function returnResult(status, userChoice, computerChoice) {
     const instructions = document.querySelector('.instructions');
     const result = document.createElement('h3');
     
-    if (document.querySelector('.result')) {
-        document.querySelector('.result').remove();
-    }
-    if (instructions) instructions.remove();
+    document.querySelector('.result')?.remove();
+    instructions?.remove();
     
     result.className = 'result';
 
@@ -80,9 +75,7 @@ function showRound(){
     const intro = document.querySelector('.intro');
     const roundCount = document.createElement('h5');
 
-    if (document.querySelector('.roundCount')) {
-        document.querySelector('.roundCount').remove();
-    }
+    document.querySelector('.roundCount')?.remove();
     
     roundCount.className = 'roundCount';
     roundCount.innerText = `Round ${round + 1}`;
@@ -127,9 +120,7 @@ function showScore(userScore, computerScore) {
     const contentContainer = document.querySelector('.contentContainer');
     const score = document.createElement('h4');
 
-    if (document.querySelector('.score')) {
-        document.querySelector('.score').remove();
-    }
+    document.querySelector('.score')?.remove();
 
     score.className = 'score';
     score.innerText = `User: ${userScore} | Computer: ${computerScore}`;
